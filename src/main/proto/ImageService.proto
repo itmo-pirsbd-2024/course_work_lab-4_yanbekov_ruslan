@@ -10,9 +10,9 @@ service ImageProcessingService {
 message ImageRequest {
   string operation = 1;
   bytes imageData = 2;
-  int32 width = 3; // Новое поле для ширины
-  int32 height = 4; // Новое поле для высоты
-  double angle = 5; // Новое поле для угла поворота
+  int32 width = 3;
+  int32 height = 4;
+  double angle = 5;
 }
 
 message ImageResponse {
