@@ -55,18 +55,8 @@ public class ImageProcessingServer {
                     return;
                 }
 
-                BufferedImage outputImage;
-
-                switch (request.getOperation()) {
-                    case GRAYSCALE:
-                        logger.info("Обработка операции преобразования в черно-белый");
-                        outputImage = applyGrayscale(inputImage);
-                        break;
-                    case INVERT:
-                        logger.info("Обработка операции инверсии");
-                        outputImage = applyInvert(inputImage);
-                        break;
-                    case RESIZE:
+                BufferedImage outputImage = switch (request.getOperationCase()) {
+                    case RESIZEPARAMS -> {
                         int width = request.getResizeParams().getWidth();
                         int height = request.getResizeParams().getHeight();
                         if (width <= 0 || height <= 0) {
@@ -74,22 +64,35 @@ public class ImageProcessingServer {
                             responseObserver.onError(Status.INVALID_ARGUMENT
                                     .withDescription("Некорректные размеры изображения")
                                     .asRuntimeException());
-                            return;
+                            yield null;
                         }
                         logger.info("Обработка операции изменения размера с шириной: {} и высотой: {}", width, height);
-                        outputImage = applyResize(inputImage, width, height);
-                        break;
-                    case ROTATE:
+                        yield applyResize(inputImage, width, height);
+                    }
+                    case ROTATEPARAMS -> {
                         double angle = request.getRotateParams().getAngle();
                         logger.info("Обработка операции поворота с углом: {}", angle);
-                        outputImage = applyRotate(inputImage, angle);
-                        break;
-                    default:
+                        yield applyRotate(inputImage, angle);
+                    }
+                    case GRAYSCALEPARAMS -> {
+                        logger.info("Обработка операции преобразования в черно-белый");
+                        yield applyGrayscale(inputImage);
+                    }
+                    case INVERTPARAMS -> {
+                        logger.info("Обработка операции инверсии");
+                        yield applyInvert(inputImage);
+                    }
+                    case OPERATION_NOT_SET -> {
                         logger.error("Ошибка валидации: неизвестная операция");
                         responseObserver.onError(Status.INVALID_ARGUMENT
-                                .withDescription("Неизвестная операция: " + request.getOperation())
+                                .withDescription("Неизвестная операция")
                                 .asRuntimeException());
-                        return;
+                        yield null;
+                    }
+                };
+
+                if (outputImage == null) {
+                    return;
                 }
 
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();

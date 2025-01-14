@@ -35,8 +35,6 @@ public class ImageProcessingClient {
         ImageRequest.Builder requestBuilder = ImageRequest.newBuilder()
                 .setImageData(ByteString.copyFrom(imageData));
 
-        OperationType operationType = OperationType.UNKNOWN;
-
         switch (operation) {
             case "resize":
                 if (args.length < 4) {
@@ -45,9 +43,7 @@ public class ImageProcessingClient {
                 }
                 int width = Integer.parseInt(args[2]);
                 int height = Integer.parseInt(args[3]);
-                operationType = OperationType.RESIZE;
-                requestBuilder.setOperation(operationType)
-                        .setResizeParams(ResizeParams.newBuilder().setWidth(width).setHeight(height).build());
+                requestBuilder.setResizeParams(ResizeParams.newBuilder().setWidth(width).setHeight(height).build());
                 break;
             case "rotate":
                 if (args.length < 3) {
@@ -55,17 +51,13 @@ public class ImageProcessingClient {
                     System.exit(1);
                 }
                 double angle = Double.parseDouble(args[2]);
-                operationType = OperationType.ROTATE;
-                requestBuilder.setOperation(operationType)
-                        .setRotateParams(RotateParams.newBuilder().setAngle(angle).build());
+                requestBuilder.setRotateParams(RotateParams.newBuilder().setAngle(angle).build());
                 break;
             case "grayscale":
-                operationType = OperationType.GRAYSCALE;
-                requestBuilder.setOperation(operationType);
+                requestBuilder.setGrayscaleParams(GrayscaleParams.newBuilder().build());
                 break;
             case "invert":
-                operationType = OperationType.INVERT;
-                requestBuilder.setOperation(operationType);
+                requestBuilder.setInvertParams(InvertParams.newBuilder().build());
                 break;
             default:
                 logger.info("Неизвестная операция: " + operation);
