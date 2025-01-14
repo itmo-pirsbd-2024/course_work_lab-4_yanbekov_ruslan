@@ -7,12 +7,31 @@ service ImageProcessingService {
   rpc processImage(ImageRequest) returns (ImageResponse);
 }
 
+enum OperationType {
+  UNKNOWN = 0;
+  RESIZE = 1;
+  ROTATE = 2;
+  GRAYSCALE = 3;
+  INVERT = 4;
+}
+
+message ResizeParams {
+  int32 width = 1;
+  int32 height = 2;
+}
+
+message RotateParams {
+  double angle = 1;
+}
+
 message ImageRequest {
-  string operation = 1;
+  OperationType operation = 1;
   bytes imageData = 2;
-  int32 width = 3;
-  int32 height = 4;
-  double angle = 5; //угол
+
+  oneof operation_params {
+    ResizeParams resizeParams = 3;
+    RotateParams rotateParams = 4;
+  }
 }
 
 message ImageResponse {

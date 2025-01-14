@@ -14,19 +14,1175 @@ public final class ImageProcessingProto {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  /**
+   * Protobuf enum {@code OperationType}
+   */
+  public enum OperationType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>UNKNOWN = 0;</code>
+     */
+    UNKNOWN(0),
+    /**
+     * <code>RESIZE = 1;</code>
+     */
+    RESIZE(1),
+    /**
+     * <code>ROTATE = 2;</code>
+     */
+    ROTATE(2),
+    /**
+     * <code>GRAYSCALE = 3;</code>
+     */
+    GRAYSCALE(3),
+    /**
+     * <pre>
+     * Добавьте другие операции по мере необходимости
+     * </pre>
+     *
+     * <code>INVERT = 4;</code>
+     */
+    INVERT(4),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>UNKNOWN = 0;</code>
+     */
+    public static final int UNKNOWN_VALUE = 0;
+    /**
+     * <code>RESIZE = 1;</code>
+     */
+    public static final int RESIZE_VALUE = 1;
+    /**
+     * <code>ROTATE = 2;</code>
+     */
+    public static final int ROTATE_VALUE = 2;
+    /**
+     * <code>GRAYSCALE = 3;</code>
+     */
+    public static final int GRAYSCALE_VALUE = 3;
+    /**
+     * <pre>
+     * Добавьте другие операции по мере необходимости
+     * </pre>
+     *
+     * <code>INVERT = 4;</code>
+     */
+    public static final int INVERT_VALUE = 4;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static OperationType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static OperationType forNumber(int value) {
+      switch (value) {
+        case 0: return UNKNOWN;
+        case 1: return RESIZE;
+        case 2: return ROTATE;
+        case 3: return GRAYSCALE;
+        case 4: return INVERT;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<OperationType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        OperationType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<OperationType>() {
+            public OperationType findValueByNumber(int number) {
+              return OperationType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.example.imageprocessing.ImageProcessingProto.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final OperationType[] VALUES = values();
+
+    public static OperationType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private OperationType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:OperationType)
+  }
+
+  public interface ResizeParamsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ResizeParams)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 width = 1;</code>
+     */
+    int getWidth();
+
+    /**
+     * <code>int32 height = 2;</code>
+     */
+    int getHeight();
+  }
+  /**
+   * Protobuf type {@code ResizeParams}
+   */
+  public  static final class ResizeParams extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ResizeParams)
+      ResizeParamsOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ResizeParams.newBuilder() to construct.
+    private ResizeParams(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ResizeParams() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ResizeParams();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ResizeParams(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              width_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              height_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.example.imageprocessing.ImageProcessingProto.internal_static_ResizeParams_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.example.imageprocessing.ImageProcessingProto.internal_static_ResizeParams_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.example.imageprocessing.ImageProcessingProto.ResizeParams.class, com.example.imageprocessing.ImageProcessingProto.ResizeParams.Builder.class);
+    }
+
+    public static final int WIDTH_FIELD_NUMBER = 1;
+    private int width_;
+    /**
+     * <code>int32 width = 1;</code>
+     */
+    public int getWidth() {
+      return width_;
+    }
+
+    public static final int HEIGHT_FIELD_NUMBER = 2;
+    private int height_;
+    /**
+     * <code>int32 height = 2;</code>
+     */
+    public int getHeight() {
+      return height_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (width_ != 0) {
+        output.writeInt32(1, width_);
+      }
+      if (height_ != 0) {
+        output.writeInt32(2, height_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (width_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, width_);
+      }
+      if (height_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, height_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.example.imageprocessing.ImageProcessingProto.ResizeParams)) {
+        return super.equals(obj);
+      }
+      com.example.imageprocessing.ImageProcessingProto.ResizeParams other = (com.example.imageprocessing.ImageProcessingProto.ResizeParams) obj;
+
+      if (getWidth()
+          != other.getWidth()) return false;
+      if (getHeight()
+          != other.getHeight()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + WIDTH_FIELD_NUMBER;
+      hash = (53 * hash) + getWidth();
+      hash = (37 * hash) + HEIGHT_FIELD_NUMBER;
+      hash = (53 * hash) + getHeight();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.example.imageprocessing.ImageProcessingProto.ResizeParams parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.ResizeParams parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.ResizeParams parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.ResizeParams parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.ResizeParams parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.ResizeParams parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.ResizeParams parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.ResizeParams parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.ResizeParams parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.ResizeParams parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.ResizeParams parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.ResizeParams parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.example.imageprocessing.ImageProcessingProto.ResizeParams prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ResizeParams}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ResizeParams)
+        com.example.imageprocessing.ImageProcessingProto.ResizeParamsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.example.imageprocessing.ImageProcessingProto.internal_static_ResizeParams_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.example.imageprocessing.ImageProcessingProto.internal_static_ResizeParams_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.example.imageprocessing.ImageProcessingProto.ResizeParams.class, com.example.imageprocessing.ImageProcessingProto.ResizeParams.Builder.class);
+      }
+
+      // Construct using com.example.imageprocessing.ImageProcessingProto.ResizeParams.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        width_ = 0;
+
+        height_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.example.imageprocessing.ImageProcessingProto.internal_static_ResizeParams_descriptor;
+      }
+
+      @java.lang.Override
+      public com.example.imageprocessing.ImageProcessingProto.ResizeParams getDefaultInstanceForType() {
+        return com.example.imageprocessing.ImageProcessingProto.ResizeParams.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.example.imageprocessing.ImageProcessingProto.ResizeParams build() {
+        com.example.imageprocessing.ImageProcessingProto.ResizeParams result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.example.imageprocessing.ImageProcessingProto.ResizeParams buildPartial() {
+        com.example.imageprocessing.ImageProcessingProto.ResizeParams result = new com.example.imageprocessing.ImageProcessingProto.ResizeParams(this);
+        result.width_ = width_;
+        result.height_ = height_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.example.imageprocessing.ImageProcessingProto.ResizeParams) {
+          return mergeFrom((com.example.imageprocessing.ImageProcessingProto.ResizeParams)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.example.imageprocessing.ImageProcessingProto.ResizeParams other) {
+        if (other == com.example.imageprocessing.ImageProcessingProto.ResizeParams.getDefaultInstance()) return this;
+        if (other.getWidth() != 0) {
+          setWidth(other.getWidth());
+        }
+        if (other.getHeight() != 0) {
+          setHeight(other.getHeight());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.example.imageprocessing.ImageProcessingProto.ResizeParams parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.example.imageprocessing.ImageProcessingProto.ResizeParams) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int width_ ;
+      /**
+       * <code>int32 width = 1;</code>
+       */
+      public int getWidth() {
+        return width_;
+      }
+      /**
+       * <code>int32 width = 1;</code>
+       */
+      public Builder setWidth(int value) {
+        
+        width_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 width = 1;</code>
+       */
+      public Builder clearWidth() {
+        
+        width_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int height_ ;
+      /**
+       * <code>int32 height = 2;</code>
+       */
+      public int getHeight() {
+        return height_;
+      }
+      /**
+       * <code>int32 height = 2;</code>
+       */
+      public Builder setHeight(int value) {
+        
+        height_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 height = 2;</code>
+       */
+      public Builder clearHeight() {
+        
+        height_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ResizeParams)
+    }
+
+    // @@protoc_insertion_point(class_scope:ResizeParams)
+    private static final com.example.imageprocessing.ImageProcessingProto.ResizeParams DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.example.imageprocessing.ImageProcessingProto.ResizeParams();
+    }
+
+    public static com.example.imageprocessing.ImageProcessingProto.ResizeParams getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ResizeParams>
+        PARSER = new com.google.protobuf.AbstractParser<ResizeParams>() {
+      @java.lang.Override
+      public ResizeParams parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ResizeParams(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ResizeParams> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ResizeParams> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.example.imageprocessing.ImageProcessingProto.ResizeParams getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface RotateParamsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:RotateParams)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>double angle = 1;</code>
+     */
+    double getAngle();
+  }
+  /**
+   * Protobuf type {@code RotateParams}
+   */
+  public  static final class RotateParams extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:RotateParams)
+      RotateParamsOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use RotateParams.newBuilder() to construct.
+    private RotateParams(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private RotateParams() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new RotateParams();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RotateParams(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 9: {
+
+              angle_ = input.readDouble();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.example.imageprocessing.ImageProcessingProto.internal_static_RotateParams_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.example.imageprocessing.ImageProcessingProto.internal_static_RotateParams_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.example.imageprocessing.ImageProcessingProto.RotateParams.class, com.example.imageprocessing.ImageProcessingProto.RotateParams.Builder.class);
+    }
+
+    public static final int ANGLE_FIELD_NUMBER = 1;
+    private double angle_;
+    /**
+     * <code>double angle = 1;</code>
+     */
+    public double getAngle() {
+      return angle_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (angle_ != 0D) {
+        output.writeDouble(1, angle_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (angle_ != 0D) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(1, angle_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.example.imageprocessing.ImageProcessingProto.RotateParams)) {
+        return super.equals(obj);
+      }
+      com.example.imageprocessing.ImageProcessingProto.RotateParams other = (com.example.imageprocessing.ImageProcessingProto.RotateParams) obj;
+
+      if (java.lang.Double.doubleToLongBits(getAngle())
+          != java.lang.Double.doubleToLongBits(
+              other.getAngle())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ANGLE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getAngle()));
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.example.imageprocessing.ImageProcessingProto.RotateParams parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.RotateParams parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.RotateParams parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.RotateParams parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.RotateParams parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.RotateParams parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.RotateParams parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.RotateParams parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.RotateParams parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.RotateParams parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.RotateParams parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.imageprocessing.ImageProcessingProto.RotateParams parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.example.imageprocessing.ImageProcessingProto.RotateParams prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code RotateParams}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:RotateParams)
+        com.example.imageprocessing.ImageProcessingProto.RotateParamsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.example.imageprocessing.ImageProcessingProto.internal_static_RotateParams_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.example.imageprocessing.ImageProcessingProto.internal_static_RotateParams_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.example.imageprocessing.ImageProcessingProto.RotateParams.class, com.example.imageprocessing.ImageProcessingProto.RotateParams.Builder.class);
+      }
+
+      // Construct using com.example.imageprocessing.ImageProcessingProto.RotateParams.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        angle_ = 0D;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.example.imageprocessing.ImageProcessingProto.internal_static_RotateParams_descriptor;
+      }
+
+      @java.lang.Override
+      public com.example.imageprocessing.ImageProcessingProto.RotateParams getDefaultInstanceForType() {
+        return com.example.imageprocessing.ImageProcessingProto.RotateParams.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.example.imageprocessing.ImageProcessingProto.RotateParams build() {
+        com.example.imageprocessing.ImageProcessingProto.RotateParams result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.example.imageprocessing.ImageProcessingProto.RotateParams buildPartial() {
+        com.example.imageprocessing.ImageProcessingProto.RotateParams result = new com.example.imageprocessing.ImageProcessingProto.RotateParams(this);
+        result.angle_ = angle_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.example.imageprocessing.ImageProcessingProto.RotateParams) {
+          return mergeFrom((com.example.imageprocessing.ImageProcessingProto.RotateParams)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.example.imageprocessing.ImageProcessingProto.RotateParams other) {
+        if (other == com.example.imageprocessing.ImageProcessingProto.RotateParams.getDefaultInstance()) return this;
+        if (other.getAngle() != 0D) {
+          setAngle(other.getAngle());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.example.imageprocessing.ImageProcessingProto.RotateParams parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.example.imageprocessing.ImageProcessingProto.RotateParams) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private double angle_ ;
+      /**
+       * <code>double angle = 1;</code>
+       */
+      public double getAngle() {
+        return angle_;
+      }
+      /**
+       * <code>double angle = 1;</code>
+       */
+      public Builder setAngle(double value) {
+        
+        angle_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double angle = 1;</code>
+       */
+      public Builder clearAngle() {
+        
+        angle_ = 0D;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:RotateParams)
+    }
+
+    // @@protoc_insertion_point(class_scope:RotateParams)
+    private static final com.example.imageprocessing.ImageProcessingProto.RotateParams DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.example.imageprocessing.ImageProcessingProto.RotateParams();
+    }
+
+    public static com.example.imageprocessing.ImageProcessingProto.RotateParams getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<RotateParams>
+        PARSER = new com.google.protobuf.AbstractParser<RotateParams>() {
+      @java.lang.Override
+      public RotateParams parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RotateParams(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<RotateParams> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RotateParams> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.example.imageprocessing.ImageProcessingProto.RotateParams getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ImageRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ImageRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string operation = 1;</code>
+     * <code>.OperationType operation = 1;</code>
      */
-    java.lang.String getOperation();
+    int getOperationValue();
     /**
-     * <code>string operation = 1;</code>
+     * <code>.OperationType operation = 1;</code>
      */
-    com.google.protobuf.ByteString
-        getOperationBytes();
+    com.example.imageprocessing.ImageProcessingProto.OperationType getOperation();
 
     /**
      * <code>bytes imageData = 2;</code>
@@ -34,31 +1190,44 @@ public final class ImageProcessingProto {
     com.google.protobuf.ByteString getImageData();
 
     /**
-     * <pre>
-     * Новое поле для ширины
-     * </pre>
-     *
-     * <code>int32 width = 3;</code>
+     * <code>.ResizeParams resizeParams = 3;</code>
      */
-    int getWidth();
+    boolean hasResizeParams();
+    /**
+     * <code>.ResizeParams resizeParams = 3;</code>
+     */
+    com.example.imageprocessing.ImageProcessingProto.ResizeParams getResizeParams();
+    /**
+     * <code>.ResizeParams resizeParams = 3;</code>
+     */
+    com.example.imageprocessing.ImageProcessingProto.ResizeParamsOrBuilder getResizeParamsOrBuilder();
 
     /**
      * <pre>
-     * Новое поле для высоты
+     * Добавьте другие параметры по мере необходимости
      * </pre>
      *
-     * <code>int32 height = 4;</code>
+     * <code>.RotateParams rotateParams = 4;</code>
      */
-    int getHeight();
-
+    boolean hasRotateParams();
     /**
      * <pre>
-     * Новое поле для угла поворота
+     * Добавьте другие параметры по мере необходимости
      * </pre>
      *
-     * <code>double angle = 5;</code>
+     * <code>.RotateParams rotateParams = 4;</code>
      */
-    double getAngle();
+    com.example.imageprocessing.ImageProcessingProto.RotateParams getRotateParams();
+    /**
+     * <pre>
+     * Добавьте другие параметры по мере необходимости
+     * </pre>
+     *
+     * <code>.RotateParams rotateParams = 4;</code>
+     */
+    com.example.imageprocessing.ImageProcessingProto.RotateParamsOrBuilder getRotateParamsOrBuilder();
+
+    public com.example.imageprocessing.ImageProcessingProto.ImageRequest.OperationParamsCase getOperationParamsCase();
   }
   /**
    * Protobuf type {@code ImageRequest}
@@ -73,7 +1242,7 @@ public final class ImageProcessingProto {
       super(builder);
     }
     private ImageRequest() {
-      operation_ = "";
+      operation_ = 0;
       imageData_ = com.google.protobuf.ByteString.EMPTY;
     }
 
@@ -107,10 +1276,10 @@ public final class ImageProcessingProto {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 8: {
+              int rawValue = input.readEnum();
 
-              operation_ = s;
+              operation_ = rawValue;
               break;
             }
             case 18: {
@@ -118,19 +1287,32 @@ public final class ImageProcessingProto {
               imageData_ = input.readBytes();
               break;
             }
-            case 24: {
-
-              width_ = input.readInt32();
+            case 26: {
+              com.example.imageprocessing.ImageProcessingProto.ResizeParams.Builder subBuilder = null;
+              if (operationParamsCase_ == 3) {
+                subBuilder = ((com.example.imageprocessing.ImageProcessingProto.ResizeParams) operationParams_).toBuilder();
+              }
+              operationParams_ =
+                  input.readMessage(com.example.imageprocessing.ImageProcessingProto.ResizeParams.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((com.example.imageprocessing.ImageProcessingProto.ResizeParams) operationParams_);
+                operationParams_ = subBuilder.buildPartial();
+              }
+              operationParamsCase_ = 3;
               break;
             }
-            case 32: {
-
-              height_ = input.readInt32();
-              break;
-            }
-            case 41: {
-
-              angle_ = input.readDouble();
+            case 34: {
+              com.example.imageprocessing.ImageProcessingProto.RotateParams.Builder subBuilder = null;
+              if (operationParamsCase_ == 4) {
+                subBuilder = ((com.example.imageprocessing.ImageProcessingProto.RotateParams) operationParams_).toBuilder();
+              }
+              operationParams_ =
+                  input.readMessage(com.example.imageprocessing.ImageProcessingProto.RotateParams.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((com.example.imageprocessing.ImageProcessingProto.RotateParams) operationParams_);
+                operationParams_ = subBuilder.buildPartial();
+              }
+              operationParamsCase_ = 4;
               break;
             }
             default: {
@@ -165,38 +1347,59 @@ public final class ImageProcessingProto {
               com.example.imageprocessing.ImageProcessingProto.ImageRequest.class, com.example.imageprocessing.ImageProcessingProto.ImageRequest.Builder.class);
     }
 
-    public static final int OPERATION_FIELD_NUMBER = 1;
-    private volatile java.lang.Object operation_;
-    /**
-     * <code>string operation = 1;</code>
-     */
-    public java.lang.String getOperation() {
-      java.lang.Object ref = operation_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        operation_ = s;
-        return s;
+    private int operationParamsCase_ = 0;
+    private java.lang.Object operationParams_;
+    public enum OperationParamsCase
+        implements com.google.protobuf.Internal.EnumLite {
+      RESIZEPARAMS(3),
+      ROTATEPARAMS(4),
+      OPERATIONPARAMS_NOT_SET(0);
+      private final int value;
+      private OperationParamsCase(int value) {
+        this.value = value;
       }
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static OperationParamsCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static OperationParamsCase forNumber(int value) {
+        switch (value) {
+          case 3: return RESIZEPARAMS;
+          case 4: return ROTATEPARAMS;
+          case 0: return OPERATIONPARAMS_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public OperationParamsCase
+    getOperationParamsCase() {
+      return OperationParamsCase.forNumber(
+          operationParamsCase_);
+    }
+
+    public static final int OPERATION_FIELD_NUMBER = 1;
+    private int operation_;
+    /**
+     * <code>.OperationType operation = 1;</code>
+     */
+    public int getOperationValue() {
+      return operation_;
     }
     /**
-     * <code>string operation = 1;</code>
+     * <code>.OperationType operation = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getOperationBytes() {
-      java.lang.Object ref = operation_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        operation_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.example.imageprocessing.ImageProcessingProto.OperationType getOperation() {
+      @SuppressWarnings("deprecation")
+      com.example.imageprocessing.ImageProcessingProto.OperationType result = com.example.imageprocessing.ImageProcessingProto.OperationType.valueOf(operation_);
+      return result == null ? com.example.imageprocessing.ImageProcessingProto.OperationType.UNRECOGNIZED : result;
     }
 
     public static final int IMAGEDATA_FIELD_NUMBER = 2;
@@ -208,43 +1411,68 @@ public final class ImageProcessingProto {
       return imageData_;
     }
 
-    public static final int WIDTH_FIELD_NUMBER = 3;
-    private int width_;
+    public static final int RESIZEPARAMS_FIELD_NUMBER = 3;
     /**
-     * <pre>
-     * Новое поле для ширины
-     * </pre>
-     *
-     * <code>int32 width = 3;</code>
+     * <code>.ResizeParams resizeParams = 3;</code>
      */
-    public int getWidth() {
-      return width_;
+    public boolean hasResizeParams() {
+      return operationParamsCase_ == 3;
+    }
+    /**
+     * <code>.ResizeParams resizeParams = 3;</code>
+     */
+    public com.example.imageprocessing.ImageProcessingProto.ResizeParams getResizeParams() {
+      if (operationParamsCase_ == 3) {
+         return (com.example.imageprocessing.ImageProcessingProto.ResizeParams) operationParams_;
+      }
+      return com.example.imageprocessing.ImageProcessingProto.ResizeParams.getDefaultInstance();
+    }
+    /**
+     * <code>.ResizeParams resizeParams = 3;</code>
+     */
+    public com.example.imageprocessing.ImageProcessingProto.ResizeParamsOrBuilder getResizeParamsOrBuilder() {
+      if (operationParamsCase_ == 3) {
+         return (com.example.imageprocessing.ImageProcessingProto.ResizeParams) operationParams_;
+      }
+      return com.example.imageprocessing.ImageProcessingProto.ResizeParams.getDefaultInstance();
     }
 
-    public static final int HEIGHT_FIELD_NUMBER = 4;
-    private int height_;
+    public static final int ROTATEPARAMS_FIELD_NUMBER = 4;
     /**
      * <pre>
-     * Новое поле для высоты
+     * Добавьте другие параметры по мере необходимости
      * </pre>
      *
-     * <code>int32 height = 4;</code>
+     * <code>.RotateParams rotateParams = 4;</code>
      */
-    public int getHeight() {
-      return height_;
+    public boolean hasRotateParams() {
+      return operationParamsCase_ == 4;
     }
-
-    public static final int ANGLE_FIELD_NUMBER = 5;
-    private double angle_;
     /**
      * <pre>
-     * Новое поле для угла поворота
+     * Добавьте другие параметры по мере необходимости
      * </pre>
      *
-     * <code>double angle = 5;</code>
+     * <code>.RotateParams rotateParams = 4;</code>
      */
-    public double getAngle() {
-      return angle_;
+    public com.example.imageprocessing.ImageProcessingProto.RotateParams getRotateParams() {
+      if (operationParamsCase_ == 4) {
+         return (com.example.imageprocessing.ImageProcessingProto.RotateParams) operationParams_;
+      }
+      return com.example.imageprocessing.ImageProcessingProto.RotateParams.getDefaultInstance();
+    }
+    /**
+     * <pre>
+     * Добавьте другие параметры по мере необходимости
+     * </pre>
+     *
+     * <code>.RotateParams rotateParams = 4;</code>
+     */
+    public com.example.imageprocessing.ImageProcessingProto.RotateParamsOrBuilder getRotateParamsOrBuilder() {
+      if (operationParamsCase_ == 4) {
+         return (com.example.imageprocessing.ImageProcessingProto.RotateParams) operationParams_;
+      }
+      return com.example.imageprocessing.ImageProcessingProto.RotateParams.getDefaultInstance();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -261,20 +1489,17 @@ public final class ImageProcessingProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getOperationBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, operation_);
+      if (operation_ != com.example.imageprocessing.ImageProcessingProto.OperationType.UNKNOWN.getNumber()) {
+        output.writeEnum(1, operation_);
       }
       if (!imageData_.isEmpty()) {
         output.writeBytes(2, imageData_);
       }
-      if (width_ != 0) {
-        output.writeInt32(3, width_);
+      if (operationParamsCase_ == 3) {
+        output.writeMessage(3, (com.example.imageprocessing.ImageProcessingProto.ResizeParams) operationParams_);
       }
-      if (height_ != 0) {
-        output.writeInt32(4, height_);
-      }
-      if (angle_ != 0D) {
-        output.writeDouble(5, angle_);
+      if (operationParamsCase_ == 4) {
+        output.writeMessage(4, (com.example.imageprocessing.ImageProcessingProto.RotateParams) operationParams_);
       }
       unknownFields.writeTo(output);
     }
@@ -285,24 +1510,21 @@ public final class ImageProcessingProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!getOperationBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, operation_);
+      if (operation_ != com.example.imageprocessing.ImageProcessingProto.OperationType.UNKNOWN.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, operation_);
       }
       if (!imageData_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, imageData_);
       }
-      if (width_ != 0) {
+      if (operationParamsCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, width_);
+          .computeMessageSize(3, (com.example.imageprocessing.ImageProcessingProto.ResizeParams) operationParams_);
       }
-      if (height_ != 0) {
+      if (operationParamsCase_ == 4) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, height_);
-      }
-      if (angle_ != 0D) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(5, angle_);
+          .computeMessageSize(4, (com.example.imageprocessing.ImageProcessingProto.RotateParams) operationParams_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -319,17 +1541,22 @@ public final class ImageProcessingProto {
       }
       com.example.imageprocessing.ImageProcessingProto.ImageRequest other = (com.example.imageprocessing.ImageProcessingProto.ImageRequest) obj;
 
-      if (!getOperation()
-          .equals(other.getOperation())) return false;
+      if (operation_ != other.operation_) return false;
       if (!getImageData()
           .equals(other.getImageData())) return false;
-      if (getWidth()
-          != other.getWidth()) return false;
-      if (getHeight()
-          != other.getHeight()) return false;
-      if (java.lang.Double.doubleToLongBits(getAngle())
-          != java.lang.Double.doubleToLongBits(
-              other.getAngle())) return false;
+      if (!getOperationParamsCase().equals(other.getOperationParamsCase())) return false;
+      switch (operationParamsCase_) {
+        case 3:
+          if (!getResizeParams()
+              .equals(other.getResizeParams())) return false;
+          break;
+        case 4:
+          if (!getRotateParams()
+              .equals(other.getRotateParams())) return false;
+          break;
+        case 0:
+        default:
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -342,16 +1569,21 @@ public final class ImageProcessingProto {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + OPERATION_FIELD_NUMBER;
-      hash = (53 * hash) + getOperation().hashCode();
+      hash = (53 * hash) + operation_;
       hash = (37 * hash) + IMAGEDATA_FIELD_NUMBER;
       hash = (53 * hash) + getImageData().hashCode();
-      hash = (37 * hash) + WIDTH_FIELD_NUMBER;
-      hash = (53 * hash) + getWidth();
-      hash = (37 * hash) + HEIGHT_FIELD_NUMBER;
-      hash = (53 * hash) + getHeight();
-      hash = (37 * hash) + ANGLE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getAngle()));
+      switch (operationParamsCase_) {
+        case 3:
+          hash = (37 * hash) + RESIZEPARAMS_FIELD_NUMBER;
+          hash = (53 * hash) + getResizeParams().hashCode();
+          break;
+        case 4:
+          hash = (37 * hash) + ROTATEPARAMS_FIELD_NUMBER;
+          hash = (53 * hash) + getRotateParams().hashCode();
+          break;
+        case 0:
+        default:
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -485,16 +1717,12 @@ public final class ImageProcessingProto {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        operation_ = "";
+        operation_ = 0;
 
         imageData_ = com.google.protobuf.ByteString.EMPTY;
 
-        width_ = 0;
-
-        height_ = 0;
-
-        angle_ = 0D;
-
+        operationParamsCase_ = 0;
+        operationParams_ = null;
         return this;
       }
 
@@ -523,9 +1751,21 @@ public final class ImageProcessingProto {
         com.example.imageprocessing.ImageProcessingProto.ImageRequest result = new com.example.imageprocessing.ImageProcessingProto.ImageRequest(this);
         result.operation_ = operation_;
         result.imageData_ = imageData_;
-        result.width_ = width_;
-        result.height_ = height_;
-        result.angle_ = angle_;
+        if (operationParamsCase_ == 3) {
+          if (resizeParamsBuilder_ == null) {
+            result.operationParams_ = operationParams_;
+          } else {
+            result.operationParams_ = resizeParamsBuilder_.build();
+          }
+        }
+        if (operationParamsCase_ == 4) {
+          if (rotateParamsBuilder_ == null) {
+            result.operationParams_ = operationParams_;
+          } else {
+            result.operationParams_ = rotateParamsBuilder_.build();
+          }
+        }
+        result.operationParamsCase_ = operationParamsCase_;
         onBuilt();
         return result;
       }
@@ -574,21 +1814,24 @@ public final class ImageProcessingProto {
 
       public Builder mergeFrom(com.example.imageprocessing.ImageProcessingProto.ImageRequest other) {
         if (other == com.example.imageprocessing.ImageProcessingProto.ImageRequest.getDefaultInstance()) return this;
-        if (!other.getOperation().isEmpty()) {
-          operation_ = other.operation_;
-          onChanged();
+        if (other.operation_ != 0) {
+          setOperationValue(other.getOperationValue());
         }
         if (other.getImageData() != com.google.protobuf.ByteString.EMPTY) {
           setImageData(other.getImageData());
         }
-        if (other.getWidth() != 0) {
-          setWidth(other.getWidth());
-        }
-        if (other.getHeight() != 0) {
-          setHeight(other.getHeight());
-        }
-        if (other.getAngle() != 0D) {
-          setAngle(other.getAngle());
+        switch (other.getOperationParamsCase()) {
+          case RESIZEPARAMS: {
+            mergeResizeParams(other.getResizeParams());
+            break;
+          }
+          case ROTATEPARAMS: {
+            mergeRotateParams(other.getRotateParams());
+            break;
+          }
+          case OPERATIONPARAMS_NOT_SET: {
+            break;
+          }
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -618,72 +1861,63 @@ public final class ImageProcessingProto {
         }
         return this;
       }
+      private int operationParamsCase_ = 0;
+      private java.lang.Object operationParams_;
+      public OperationParamsCase
+          getOperationParamsCase() {
+        return OperationParamsCase.forNumber(
+            operationParamsCase_);
+      }
 
-      private java.lang.Object operation_ = "";
+      public Builder clearOperationParams() {
+        operationParamsCase_ = 0;
+        operationParams_ = null;
+        onChanged();
+        return this;
+      }
+
+
+      private int operation_ = 0;
       /**
-       * <code>string operation = 1;</code>
+       * <code>.OperationType operation = 1;</code>
        */
-      public java.lang.String getOperation() {
-        java.lang.Object ref = operation_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          operation_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getOperationValue() {
+        return operation_;
       }
       /**
-       * <code>string operation = 1;</code>
+       * <code>.OperationType operation = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getOperationBytes() {
-        java.lang.Object ref = operation_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          operation_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string operation = 1;</code>
-       */
-      public Builder setOperation(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setOperationValue(int value) {
         operation_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string operation = 1;</code>
+       * <code>.OperationType operation = 1;</code>
+       */
+      public com.example.imageprocessing.ImageProcessingProto.OperationType getOperation() {
+        @SuppressWarnings("deprecation")
+        com.example.imageprocessing.ImageProcessingProto.OperationType result = com.example.imageprocessing.ImageProcessingProto.OperationType.valueOf(operation_);
+        return result == null ? com.example.imageprocessing.ImageProcessingProto.OperationType.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.OperationType operation = 1;</code>
+       */
+      public Builder setOperation(com.example.imageprocessing.ImageProcessingProto.OperationType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        operation_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.OperationType operation = 1;</code>
        */
       public Builder clearOperation() {
         
-        operation_ = getDefaultInstance().getOperation();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string operation = 1;</code>
-       */
-      public Builder setOperationBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        operation_ = value;
+        operation_ = 0;
         onChanged();
         return this;
       }
@@ -717,118 +1951,312 @@ public final class ImageProcessingProto {
         return this;
       }
 
-      private int width_ ;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.example.imageprocessing.ImageProcessingProto.ResizeParams, com.example.imageprocessing.ImageProcessingProto.ResizeParams.Builder, com.example.imageprocessing.ImageProcessingProto.ResizeParamsOrBuilder> resizeParamsBuilder_;
       /**
-       * <pre>
-       * Новое поле для ширины
-       * </pre>
-       *
-       * <code>int32 width = 3;</code>
+       * <code>.ResizeParams resizeParams = 3;</code>
        */
-      public int getWidth() {
-        return width_;
+      public boolean hasResizeParams() {
+        return operationParamsCase_ == 3;
       }
       /**
-       * <pre>
-       * Новое поле для ширины
-       * </pre>
-       *
-       * <code>int32 width = 3;</code>
+       * <code>.ResizeParams resizeParams = 3;</code>
        */
-      public Builder setWidth(int value) {
-        
-        width_ = value;
-        onChanged();
+      public com.example.imageprocessing.ImageProcessingProto.ResizeParams getResizeParams() {
+        if (resizeParamsBuilder_ == null) {
+          if (operationParamsCase_ == 3) {
+            return (com.example.imageprocessing.ImageProcessingProto.ResizeParams) operationParams_;
+          }
+          return com.example.imageprocessing.ImageProcessingProto.ResizeParams.getDefaultInstance();
+        } else {
+          if (operationParamsCase_ == 3) {
+            return resizeParamsBuilder_.getMessage();
+          }
+          return com.example.imageprocessing.ImageProcessingProto.ResizeParams.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.ResizeParams resizeParams = 3;</code>
+       */
+      public Builder setResizeParams(com.example.imageprocessing.ImageProcessingProto.ResizeParams value) {
+        if (resizeParamsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          operationParams_ = value;
+          onChanged();
+        } else {
+          resizeParamsBuilder_.setMessage(value);
+        }
+        operationParamsCase_ = 3;
         return this;
       }
       /**
-       * <pre>
-       * Новое поле для ширины
-       * </pre>
-       *
-       * <code>int32 width = 3;</code>
+       * <code>.ResizeParams resizeParams = 3;</code>
        */
-      public Builder clearWidth() {
-        
-        width_ = 0;
-        onChanged();
+      public Builder setResizeParams(
+          com.example.imageprocessing.ImageProcessingProto.ResizeParams.Builder builderForValue) {
+        if (resizeParamsBuilder_ == null) {
+          operationParams_ = builderForValue.build();
+          onChanged();
+        } else {
+          resizeParamsBuilder_.setMessage(builderForValue.build());
+        }
+        operationParamsCase_ = 3;
         return this;
+      }
+      /**
+       * <code>.ResizeParams resizeParams = 3;</code>
+       */
+      public Builder mergeResizeParams(com.example.imageprocessing.ImageProcessingProto.ResizeParams value) {
+        if (resizeParamsBuilder_ == null) {
+          if (operationParamsCase_ == 3 &&
+              operationParams_ != com.example.imageprocessing.ImageProcessingProto.ResizeParams.getDefaultInstance()) {
+            operationParams_ = com.example.imageprocessing.ImageProcessingProto.ResizeParams.newBuilder((com.example.imageprocessing.ImageProcessingProto.ResizeParams) operationParams_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            operationParams_ = value;
+          }
+          onChanged();
+        } else {
+          if (operationParamsCase_ == 3) {
+            resizeParamsBuilder_.mergeFrom(value);
+          }
+          resizeParamsBuilder_.setMessage(value);
+        }
+        operationParamsCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.ResizeParams resizeParams = 3;</code>
+       */
+      public Builder clearResizeParams() {
+        if (resizeParamsBuilder_ == null) {
+          if (operationParamsCase_ == 3) {
+            operationParamsCase_ = 0;
+            operationParams_ = null;
+            onChanged();
+          }
+        } else {
+          if (operationParamsCase_ == 3) {
+            operationParamsCase_ = 0;
+            operationParams_ = null;
+          }
+          resizeParamsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.ResizeParams resizeParams = 3;</code>
+       */
+      public com.example.imageprocessing.ImageProcessingProto.ResizeParams.Builder getResizeParamsBuilder() {
+        return getResizeParamsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.ResizeParams resizeParams = 3;</code>
+       */
+      public com.example.imageprocessing.ImageProcessingProto.ResizeParamsOrBuilder getResizeParamsOrBuilder() {
+        if ((operationParamsCase_ == 3) && (resizeParamsBuilder_ != null)) {
+          return resizeParamsBuilder_.getMessageOrBuilder();
+        } else {
+          if (operationParamsCase_ == 3) {
+            return (com.example.imageprocessing.ImageProcessingProto.ResizeParams) operationParams_;
+          }
+          return com.example.imageprocessing.ImageProcessingProto.ResizeParams.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.ResizeParams resizeParams = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.example.imageprocessing.ImageProcessingProto.ResizeParams, com.example.imageprocessing.ImageProcessingProto.ResizeParams.Builder, com.example.imageprocessing.ImageProcessingProto.ResizeParamsOrBuilder> 
+          getResizeParamsFieldBuilder() {
+        if (resizeParamsBuilder_ == null) {
+          if (!(operationParamsCase_ == 3)) {
+            operationParams_ = com.example.imageprocessing.ImageProcessingProto.ResizeParams.getDefaultInstance();
+          }
+          resizeParamsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.example.imageprocessing.ImageProcessingProto.ResizeParams, com.example.imageprocessing.ImageProcessingProto.ResizeParams.Builder, com.example.imageprocessing.ImageProcessingProto.ResizeParamsOrBuilder>(
+                  (com.example.imageprocessing.ImageProcessingProto.ResizeParams) operationParams_,
+                  getParentForChildren(),
+                  isClean());
+          operationParams_ = null;
+        }
+        operationParamsCase_ = 3;
+        onChanged();;
+        return resizeParamsBuilder_;
       }
 
-      private int height_ ;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.example.imageprocessing.ImageProcessingProto.RotateParams, com.example.imageprocessing.ImageProcessingProto.RotateParams.Builder, com.example.imageprocessing.ImageProcessingProto.RotateParamsOrBuilder> rotateParamsBuilder_;
       /**
        * <pre>
-       * Новое поле для высоты
+       * Добавьте другие параметры по мере необходимости
        * </pre>
        *
-       * <code>int32 height = 4;</code>
+       * <code>.RotateParams rotateParams = 4;</code>
        */
-      public int getHeight() {
-        return height_;
+      public boolean hasRotateParams() {
+        return operationParamsCase_ == 4;
       }
       /**
        * <pre>
-       * Новое поле для высоты
+       * Добавьте другие параметры по мере необходимости
        * </pre>
        *
-       * <code>int32 height = 4;</code>
+       * <code>.RotateParams rotateParams = 4;</code>
        */
-      public Builder setHeight(int value) {
-        
-        height_ = value;
-        onChanged();
+      public com.example.imageprocessing.ImageProcessingProto.RotateParams getRotateParams() {
+        if (rotateParamsBuilder_ == null) {
+          if (operationParamsCase_ == 4) {
+            return (com.example.imageprocessing.ImageProcessingProto.RotateParams) operationParams_;
+          }
+          return com.example.imageprocessing.ImageProcessingProto.RotateParams.getDefaultInstance();
+        } else {
+          if (operationParamsCase_ == 4) {
+            return rotateParamsBuilder_.getMessage();
+          }
+          return com.example.imageprocessing.ImageProcessingProto.RotateParams.getDefaultInstance();
+        }
+      }
+      /**
+       * <pre>
+       * Добавьте другие параметры по мере необходимости
+       * </pre>
+       *
+       * <code>.RotateParams rotateParams = 4;</code>
+       */
+      public Builder setRotateParams(com.example.imageprocessing.ImageProcessingProto.RotateParams value) {
+        if (rotateParamsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          operationParams_ = value;
+          onChanged();
+        } else {
+          rotateParamsBuilder_.setMessage(value);
+        }
+        operationParamsCase_ = 4;
         return this;
       }
       /**
        * <pre>
-       * Новое поле для высоты
+       * Добавьте другие параметры по мере необходимости
        * </pre>
        *
-       * <code>int32 height = 4;</code>
+       * <code>.RotateParams rotateParams = 4;</code>
        */
-      public Builder clearHeight() {
-        
-        height_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private double angle_ ;
-      /**
-       * <pre>
-       * Новое поле для угла поворота
-       * </pre>
-       *
-       * <code>double angle = 5;</code>
-       */
-      public double getAngle() {
-        return angle_;
-      }
-      /**
-       * <pre>
-       * Новое поле для угла поворота
-       * </pre>
-       *
-       * <code>double angle = 5;</code>
-       */
-      public Builder setAngle(double value) {
-        
-        angle_ = value;
-        onChanged();
+      public Builder setRotateParams(
+          com.example.imageprocessing.ImageProcessingProto.RotateParams.Builder builderForValue) {
+        if (rotateParamsBuilder_ == null) {
+          operationParams_ = builderForValue.build();
+          onChanged();
+        } else {
+          rotateParamsBuilder_.setMessage(builderForValue.build());
+        }
+        operationParamsCase_ = 4;
         return this;
       }
       /**
        * <pre>
-       * Новое поле для угла поворота
+       * Добавьте другие параметры по мере необходимости
        * </pre>
        *
-       * <code>double angle = 5;</code>
+       * <code>.RotateParams rotateParams = 4;</code>
        */
-      public Builder clearAngle() {
-        
-        angle_ = 0D;
-        onChanged();
+      public Builder mergeRotateParams(com.example.imageprocessing.ImageProcessingProto.RotateParams value) {
+        if (rotateParamsBuilder_ == null) {
+          if (operationParamsCase_ == 4 &&
+              operationParams_ != com.example.imageprocessing.ImageProcessingProto.RotateParams.getDefaultInstance()) {
+            operationParams_ = com.example.imageprocessing.ImageProcessingProto.RotateParams.newBuilder((com.example.imageprocessing.ImageProcessingProto.RotateParams) operationParams_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            operationParams_ = value;
+          }
+          onChanged();
+        } else {
+          if (operationParamsCase_ == 4) {
+            rotateParamsBuilder_.mergeFrom(value);
+          }
+          rotateParamsBuilder_.setMessage(value);
+        }
+        operationParamsCase_ = 4;
         return this;
+      }
+      /**
+       * <pre>
+       * Добавьте другие параметры по мере необходимости
+       * </pre>
+       *
+       * <code>.RotateParams rotateParams = 4;</code>
+       */
+      public Builder clearRotateParams() {
+        if (rotateParamsBuilder_ == null) {
+          if (operationParamsCase_ == 4) {
+            operationParamsCase_ = 0;
+            operationParams_ = null;
+            onChanged();
+          }
+        } else {
+          if (operationParamsCase_ == 4) {
+            operationParamsCase_ = 0;
+            operationParams_ = null;
+          }
+          rotateParamsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Добавьте другие параметры по мере необходимости
+       * </pre>
+       *
+       * <code>.RotateParams rotateParams = 4;</code>
+       */
+      public com.example.imageprocessing.ImageProcessingProto.RotateParams.Builder getRotateParamsBuilder() {
+        return getRotateParamsFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Добавьте другие параметры по мере необходимости
+       * </pre>
+       *
+       * <code>.RotateParams rotateParams = 4;</code>
+       */
+      public com.example.imageprocessing.ImageProcessingProto.RotateParamsOrBuilder getRotateParamsOrBuilder() {
+        if ((operationParamsCase_ == 4) && (rotateParamsBuilder_ != null)) {
+          return rotateParamsBuilder_.getMessageOrBuilder();
+        } else {
+          if (operationParamsCase_ == 4) {
+            return (com.example.imageprocessing.ImageProcessingProto.RotateParams) operationParams_;
+          }
+          return com.example.imageprocessing.ImageProcessingProto.RotateParams.getDefaultInstance();
+        }
+      }
+      /**
+       * <pre>
+       * Добавьте другие параметры по мере необходимости
+       * </pre>
+       *
+       * <code>.RotateParams rotateParams = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.example.imageprocessing.ImageProcessingProto.RotateParams, com.example.imageprocessing.ImageProcessingProto.RotateParams.Builder, com.example.imageprocessing.ImageProcessingProto.RotateParamsOrBuilder> 
+          getRotateParamsFieldBuilder() {
+        if (rotateParamsBuilder_ == null) {
+          if (!(operationParamsCase_ == 4)) {
+            operationParams_ = com.example.imageprocessing.ImageProcessingProto.RotateParams.getDefaultInstance();
+          }
+          rotateParamsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.example.imageprocessing.ImageProcessingProto.RotateParams, com.example.imageprocessing.ImageProcessingProto.RotateParams.Builder, com.example.imageprocessing.ImageProcessingProto.RotateParamsOrBuilder>(
+                  (com.example.imageprocessing.ImageProcessingProto.RotateParams) operationParams_,
+                  getParentForChildren(),
+                  isClean());
+          operationParams_ = null;
+        }
+        operationParamsCase_ = 4;
+        onChanged();;
+        return rotateParamsBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -1368,6 +2796,16 @@ public final class ImageProcessingProto {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ResizeParams_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ResizeParams_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_RotateParams_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_RotateParams_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ImageRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -1386,27 +2824,44 @@ public final class ImageProcessingProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\022ImageService.proto\"b\n\014ImageRequest\022\021\n\t" +
-      "operation\030\001 \001(\t\022\021\n\timageData\030\002 \001(\014\022\r\n\005wi" +
-      "dth\030\003 \001(\005\022\016\n\006height\030\004 \001(\005\022\r\n\005angle\030\005 \001(\001" +
-      "\"\"\n\rImageResponse\022\021\n\timageData\030\001 \001(\0142G\n\026" +
-      "ImageProcessingService\022-\n\014processImage\022\r" +
-      ".ImageRequest\032\016.ImageResponseB3\n\033com.exa" +
-      "mple.imageprocessingB\024ImageProcessingPro" +
-      "tob\006proto3"
+      "\n\022ImageService.proto\"-\n\014ResizeParams\022\r\n\005" +
+      "width\030\001 \001(\005\022\016\n\006height\030\002 \001(\005\"\035\n\014RotatePar" +
+      "ams\022\r\n\005angle\030\001 \001(\001\"\246\001\n\014ImageRequest\022!\n\to" +
+      "peration\030\001 \001(\0162\016.OperationType\022\021\n\timageD" +
+      "ata\030\002 \001(\014\022%\n\014resizeParams\030\003 \001(\0132\r.Resize" +
+      "ParamsH\000\022%\n\014rotateParams\030\004 \001(\0132\r.RotateP" +
+      "aramsH\000B\022\n\020operation_params\"\"\n\rImageResp" +
+      "onse\022\021\n\timageData\030\001 \001(\014*O\n\rOperationType" +
+      "\022\013\n\007UNKNOWN\020\000\022\n\n\006RESIZE\020\001\022\n\n\006ROTATE\020\002\022\r\n" +
+      "\tGRAYSCALE\020\003\022\n\n\006INVERT\020\0042G\n\026ImageProcess" +
+      "ingService\022-\n\014processImage\022\r.ImageReques" +
+      "t\032\016.ImageResponseB3\n\033com.example.imagepr" +
+      "ocessingB\024ImageProcessingProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_ImageRequest_descriptor =
+    internal_static_ResizeParams_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_ResizeParams_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ResizeParams_descriptor,
+        new java.lang.String[] { "Width", "Height", });
+    internal_static_RotateParams_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_RotateParams_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_RotateParams_descriptor,
+        new java.lang.String[] { "Angle", });
+    internal_static_ImageRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_ImageRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ImageRequest_descriptor,
-        new java.lang.String[] { "Operation", "ImageData", "Width", "Height", "Angle", });
+        new java.lang.String[] { "Operation", "ImageData", "ResizeParams", "RotateParams", "OperationParams", });
     internal_static_ImageResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_ImageResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ImageResponse_descriptor,

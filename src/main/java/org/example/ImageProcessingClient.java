@@ -10,16 +10,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import com.example.imageprocessing.ImageProcessingServiceGrpc;
 import com.example.imageprocessing.ImageProcessingProto.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ImageProcessingClient {
+    private static final Logger logger = LogManager.getLogger(ImageProcessingClient.class);
 
     public static void main(String[] args) throws IOException {
+
         if (args.length < 2) {
             System.err.println("Не указана операция и картинка");
             System.exit(1);
         }
 
-        String server =  "localhost";
+        String server = "localhost";
         int port = 50051;
         String operation = args[0];
         String imageFile = args[1];
@@ -29,24 +33,43 @@ public class ImageProcessingClient {
 
         byte[] imageData = new FileInputStream(new File(imageFile)).readAllBytes();
         ImageRequest.Builder requestBuilder = ImageRequest.newBuilder()
-                .setOperation(operation)
                 .setImageData(ByteString.copyFrom(imageData));
 
-        if (operation.equals("resize")) {
-            if (args.length < 4) {
-                System.err.println("Введи размер нового изображения");
+        OperationType operationType = OperationType.UNKNOWN;
+
+        switch (operation) {
+            case "resize":
+                if (args.length < 4) {
+                    logger.info("Введи размер нового изображения");
+                    System.exit(1);
+                }
+                int width = Integer.parseInt(args[2]);
+                int height = Integer.parseInt(args[3]);
+                operationType = OperationType.RESIZE;
+                requestBuilder.setOperation(operationType)
+                        .setResizeParams(ResizeParams.newBuilder().setWidth(width).setHeight(height).build());
+                break;
+            case "rotate":
+                if (args.length < 3) {
+                    logger.info("Введи угол");
+                    System.exit(1);
+                }
+                double angle = Double.parseDouble(args[2]);
+                operationType = OperationType.ROTATE;
+                requestBuilder.setOperation(operationType)
+                        .setRotateParams(RotateParams.newBuilder().setAngle(angle).build());
+                break;
+            case "grayscale":
+                operationType = OperationType.GRAYSCALE;
+                requestBuilder.setOperation(operationType);
+                break;
+            case "invert":
+                operationType = OperationType.INVERT;
+                requestBuilder.setOperation(operationType);
+                break;
+            default:
+                logger.info("Неизвестная операция: " + operation);
                 System.exit(1);
-            }
-            int width = Integer.parseInt(args[2]);
-            int height = Integer.parseInt(args[3]);
-            requestBuilder.setWidth(width).setHeight(height);
-        } else if (operation.equals("rotate")) {
-            if (args.length < 3) {
-                System.err.println("Введи угол");
-                System.exit(1);
-            }
-            double angle = Double.parseDouble(args[2]);
-            requestBuilder.setAngle(angle);
         }
 
         ImageRequest request = requestBuilder.build();
@@ -56,7 +79,7 @@ public class ImageProcessingClient {
             fos.write(response.getImageData().toByteArray());
         }
 
-        System.out.println("Сохранено как output.png");
+        logger.info("Сохранено как output.png");
 
         channel.shutdown();
     }
